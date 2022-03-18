@@ -17,21 +17,18 @@ const Expenses = (props) => {
     <div>
     <Card className="expenses">
       <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
-      <ExpenseItem
-        title={props.items[0].title}
-        amount={props.items[0].amount}
-        date={props.items[0].date}
-      />
-      <ExpenseItem
-        title={props.items[1].title}
-        amount={props.items[1].amount}
-        date={props.items[1].date}
-      />
-      <ExpenseItem
-        title={props.items[2].title}
-        amount={props.items[2].amount}
-        date={props.items[2].date}
-      />
+      
+      {props.items.map((expense) => ( 
+        <ExpenseItem 
+        key={expense.id} 
+        /*key stops react generating errors when producing the list of expenses on the page, by generating a unique id from the 
+        'saveExpenseDataHandler' function for each expense, It takes the thinking time away from the browser which essentially improves performance and prevents bugs.*/ 
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+        />
+      ))}
+      
     </Card>
     </div>
   );

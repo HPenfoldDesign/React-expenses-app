@@ -1,31 +1,38 @@
+import React, { useState } from 'react';
 import NewExpense from './components/NewExpense/NewExpense';
 import Expenses from './components/Expenses/Expenses';
 
-const App = () => {
-  const expenses = [
-    {
-      id: 'e1',
-      title: 'Car Insurance',
-      amount: 300.00,
-      date: new Date(2022, 3, 14),
-    },
-    {
-      id: 'e2',
-      title: 'New Desk',
-      amount: 150,
-      date: new Date(2022, 5, 28),
-    },
-    {
-      id: 'e3',
-      title: 'Solicitors',
-      amount: 1350,
-      date: new Date(2022, 6, 12),
-    }
-  ];
 
-  const addExpenseHandler = expense => {
-    console.log('In App.js');
-    console.log(expense);
+const dummyData = [
+  {
+    id: 'e1',
+    title: 'Car Insurance',
+    amount: 300.00,
+    date: new Date(2022, 3, 14),
+  },
+  {
+    id: 'e2',
+    title: 'New Desk',
+    amount: 150,
+    date: new Date(2022, 5, 28),
+  },
+  {
+    id: 'e3',
+    title: 'Solicitors',
+    amount: 1350,
+    date: new Date(2022, 6, 12),
+  }
+];
+
+
+const App = () => {
+  
+  const [expenses, setExpenses] = useState(dummyData);
+
+  const addExpenseHandler = (expense) => {
+    setExpenses((prevExpenses) => {
+      return [expense, ...prevExpenses];
+    });
   };
   //traditionally in react props can only be passed down from parent to child, however it is possible to pass functions up from child to parent.
 
