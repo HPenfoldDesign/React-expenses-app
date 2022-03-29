@@ -5,3 +5,8 @@
     width: 50rem;
     max-width: 95%;
   }
+
+  .noexpensesfound {
+    color: white;
+    padding-left: 16px;
+  }

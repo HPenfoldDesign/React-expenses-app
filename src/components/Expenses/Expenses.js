@@ -1,42 +1,29 @@
 import React, { useState } from 'react';
-
-import ExpenseItem from '../Expenses/ExpenseItem';
 import Card from '../UI/Card';
 import '../components_css/Expenses.css';
 import ExpensesFilter from './ExpensesFilter';
+import ExpensesList from './ExpensesList';
 
 const Expenses = (props) => {
-
+  //Default state set to 2022.
   const [filteredYear, setFilteredYear] = useState('2022');
   
+  //sets the selected year as state
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
   };
 
+//filters results to only show the expenses of the selected year.  
   const filteredExpenses = props.items.filter(expense => {
     return expense.date.getFullYear().toString() === filteredYear;
   })
 
-  let expensesContent = <p>No Expenses found.</p>;
-  if(filteredExpenses.length > 0) {
-    expensesContent = filteredExpenses.map((expense) => {
-      return (
-        <ExpenseItem
-          key={expense.id}
-          /*key stops react generating errors when producing the list of expenses on the page, by generating a unique id from the
-          'saveExpenseDataHandler' function for each expense, It takes the thinking time away from the browser which essentially improves performance and prevents bugs.*/
-          title={expense.title}
-          amount={expense.amount}
-          date={expense.date} />
-      );
-    })
-  }
 
   return (
     <div>
     <Card className="expenses">
       <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
-      {expensesContent}
+      <ExpensesList items={filteredExpenses}/>
     </Card>
     </div>
   );
