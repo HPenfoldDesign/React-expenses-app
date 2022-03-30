@@ -4,7 +4,7 @@ a function after everything is initially executed to change something in the UI.
 
 import ExpenseDate from './ExpenseDate';
 import Card from '../UI/Card';
-import '../components_css/ExpenseItem.css';
+import '../Components_css/ExpenseItem.css';
 
 const ExpenseItem = (props) => {
 

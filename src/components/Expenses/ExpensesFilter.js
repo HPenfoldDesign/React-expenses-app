@@ -1,4 +1,4 @@
-import '../components_css/ExpensesFilter.css';
+import '../Components_css/ExpensesFilter.css';
 
 const ExpensesFilter = (props) => {
   
